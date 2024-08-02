@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create New Event</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Create New Event</h1>
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+  </header>
+  <main>
+    <form action="/events" method="post">
+      <label for="eventName">Event Name:</label>
+      <input type="text" id="eventName" name="eventName" required>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required>
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" required>
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required>
+      <label for="recommendedAge">Recommended Age Group:</label>
+      <select id="recommendedAge" name="recommendedAge" required>
+        <option value="All Ages">All Ages</option>
+        <option value="Kids">Kids</option>
+        <option value="Teens">Teens</option>
+        <option value="Adults">Adults</option>
+        <option value="Seniors">Seniors</option>
+      </select>
+      <button type="submit">Create Event</button>
+    </form>
+  </main>
+</body>
+</html>

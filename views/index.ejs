@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Listings</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Event Listings</h1>
+    <nav>
+      <a href="/events/new">Create Event</a>
+      <a href="/saved">Saved Events</a>
+    </nav>
+  </header>
+  <main>
+    <form action="/" method="get">
+      <input type="text" name="q" placeholder="Search events..." value="<%= typeof q !== 'undefined' ? q : '' %>">
+      <button type="submit">Search</button>
+    </form>
+    <form action="/" method="get">
+      <label for="age">Filter by Age Group:</label>
+      <select name="age" id="age">
+        <option value="All Ages" <%= age === 'All Ages' ? 'selected' : '' %>>All Ages</option>
+        <option value="Kids" <%= age === 'Kids' ? 'selected' : '' %>>Kids</option>
+        <option value="Teens" <%= age === 'Teens' ? 'selected' : '' %>>Teens</option>
+        <option value="Adults" <%= age === 'Adults' ? 'selected' : '' %>>Adults</option>
+        <option value="Seniors" <%= age === 'Seniors' ? 'selected' : '' %>>Seniors</option>
+      </select>
+      <button type="submit">Filter</button>
+    </form>
+    <% if (events.length > 0) { %>
+      <% events.forEach(event => { %>
+        <div class="event-card">
+          <h2><%= event.eventName %></h2>
+          <p><strong>Date:</strong> <%= event.date %></p>
+          <p><strong>Time:</strong> <%= event.time %></p>
+          <p><strong>Location:</strong> <%= event.location %></p>
+          <p><strong>Recommended Age:</strong> <%= event.recommendedAge %></p>
+          <p><%= event.description %></p>
+          <div class="actions">
+            <form action="/events/<%= event.id %>/edit" method="get">
+              <button type="submit">Edit</button>
+            </form>
+            <form action="/events/<%= event.id %>/delete" method="post">
+              <button type="submit">Delete</button>
+            </form>
+            <form action="/events/<%= event.id %>/save" method="post">
+              <button type="submit">Save</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No events found.</p>
+    <% } %>
+  </main>
+  
+</body>
+</html>

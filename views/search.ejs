@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Search Results for "<%= query %>"</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/saved">View Saved Events</a>
+    </nav>
+  </header>
+  <main>
+    <div class="event-list">
+      <% events.forEach(event => { %>
+        <div class="event-item">
+          <h2><%= event.eventName %></h2>
+          <p><%= event.description %></p>
+          <p>Date: <%= event.date %> at <%= event.time %></p>
+          <p>Location: <%= event.location %></p>
+          <p>Recommended Age: <%= event.recommendedAge %></p>
+          <form action="/events/<%= event.id %>/edit" method="get">
+            <button type="submit">Edit</button>
+          </form>
+          <form action="/events/<%= event.id %>/delete" method="post">
+            <button type="submit">Delete</button>
+          </form>
+          <form action="/events/<%= event.id %>/save" method="post">
+            <button type="submit">Save</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+  </main>
+</body>
+</html>

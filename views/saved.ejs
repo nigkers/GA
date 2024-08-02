@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Saved Events</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Saved Events</h1>
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+  </header>
+  <main>
+    <% if (events.length > 0) { %>
+      <% events.forEach(event => { %>
+        <div class="event-card">
+          <h2><%= event.eventName %></h2>
+          <p><strong>Date:</strong> <%= event.date %></p>
+          <p><strong>Time:</strong> <%= event.time %></p>
+          <p><strong>Location:</strong> <%= event.location %></p>
+          <p><strong>Recommended Age:</strong> <%= event.recommendedAge %></p>
+          <p><%= event.description %></p>
+          <div class="actions">
+            <form action="/saved/<%= event.id %>/remove" method="post">
+              <button type="submit">Remove</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No saved events found.</p>
+    <% } %>
+  </main>
+</body>
+</html>

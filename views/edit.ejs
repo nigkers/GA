@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Event</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Edit Event</h1>
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+  </header>
+  <main>
+    <form action="/events/<%= event.id %>" method="post">
+      <label for="eventName">Event Name:</label>
+      <input type="text" id="eventName" name="eventName" value="<%= event.eventName %>" required>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required><%= event.description %></textarea>
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" value="<%= event.date %>" required>
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" value="<%= event.time %>" required>
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" value="<%= event.location %>" required>
+      <label for="recommendedAge">Recommended Age Group:</label>
+      <select id="recommendedAge" name="recommendedAge" required>
+        <option value="All Ages" <%= event.recommendedAge === 'All Ages' ? 'selected' : '' %>>All Ages</option>
+        <option value="Kids" <%= event.recommendedAge === 'Kids' ? 'selected' : '' %>>Kids</option>
+        <option value="Teens" <%= event.recommendedAge === 'Teens' ? 'selected' : '' %>>Teens</option>
+        <option value="Adults" <%= event.recommendedAge === 'Adults' ? 'selected' : '' %>>Adults</option>
+        <option value="Seniors" <%= event.recommendedAge === 'Seniors' ? 'selected' : '' %>>Seniors</option>
+      </select>
+      <button type="submit">Update Event</button>
+    </form>
+  </main>
+</body>
+</html>
